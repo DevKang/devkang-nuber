@@ -6,4 +6,5 @@ type Verification {
   key: String!
   createdAt: String!
   updatedAt: String
+  user: User
 }
