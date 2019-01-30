@@ -13,7 +13,7 @@ const PHONE = "PHONE"
 const EMAIL = "EMAIL"
 
 @Entity()
-class User extends BaseEntity {
+class Verification extends BaseEntity {
 
   @PrimaryGeneratedColumn() id: number;
 
@@ -45,4 +45,4 @@ class User extends BaseEntity {
   }
 }
 
-export default User;
+export default Verification;

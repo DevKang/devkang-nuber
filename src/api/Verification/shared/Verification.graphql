@@ -5,5 +5,5 @@ type Verification {
   used: Boolean!
   key: String!
   createdAt: String!
-  updatedAt: String!
+  updatedAt: String
 }
