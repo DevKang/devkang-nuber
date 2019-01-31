@@ -1,4 +1,4 @@
-import User from "src/entities/User";
+import User from "../../../entities/User";
 import { Resolvers } from "src/types/resolvers";
 import { FacebookConnectMutationArgs, FacebookConnectResponse } from "src/types/graph";
 
@@ -12,7 +12,7 @@ const resolvers: Resolvers = {
           return {
             ok: true,
             error: null,
-            token: "Comming Soon"
+            token: "Comming Soon Already"
           }
         } 
       } catch (error) {
@@ -24,14 +24,14 @@ const resolvers: Resolvers = {
       }
       try {
         const { fbId } = args
-        const newUser = await User
+        await User
           .create({ ...args, profilePhoto: `http://graph.facebook.com/${fbId}/picture?type=square` })
           .save();
         
         return {
           ok: true,
           error: null,
-          token: "Comming Soon"
+          token: "Comming Soon Created"
         }
       } catch (error) {
         return {
