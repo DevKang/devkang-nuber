@@ -30,7 +30,7 @@ class Verification extends BaseEntity {
   key: string;
 
   @Column({type: 'text', default:false})
-  verified: false;
+  verified: boolean;
 
   @CreateDateColumn() createdAt: string;
   @UpdateDateColumn() updatedAt: string;
