@@ -23,20 +23,20 @@ const BCRYPT_ROUNDS = 10;
 class User extends BaseEntity {
 
   @PrimaryGeneratedColumn() id: number;
-  @Column({type:"text", unique: true}) 
+  @Column({type:"text", nullable: true}) 
   @IsEmail()
-  email: string;
+  email: string | null;
 
   @Column({type:"boolean", default: false}) 
   verifiedEmail: boolean;
 
-  @Column({type:"text"})
-  firstName: string;
+  @Column({type:"text", nullable: true})
+  firstName: string | null;
 
-  @Column({type:"text"})
-  lastName: string;
+  @Column({type:"text", nullable: true })
+  lastName: string | null;
 
-  @Column({type: "int"})
+  @Column({type: "int", nullable: true})
   age: number;
   
   @Column({type:"text"})
