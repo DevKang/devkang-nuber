@@ -8,7 +8,10 @@ import decodeJWT from './utils/decodeJTW';
 
 class App {
   public app: GraphQLServer;
-  constructor(){
+  // public pubSub: any; // PubSub is only for Dev Env
+  constructor() {
+    // this.pubSub = new PubSub();
+    // this.pubSub.ee.setMaxListeners(99);
     this.app = new GraphQLServer({
       schema, 
       context: req => {
