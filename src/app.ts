@@ -1,4 +1,4 @@
-import { GraphQLServer } from 'graphql-yoga';
+import { GraphQLServer, PubSub } from 'graphql-yoga';
 import { NextFunction, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -8,15 +8,18 @@ import decodeJWT from './utils/decodeJTW';
 
 class App {
   public app: GraphQLServer;
-  // public pubSub: any; // PubSub is only for Dev Env
+  public pubSub: any; // PubSub in yoga is not for production project!!
   constructor() {
-    // this.pubSub = new PubSub();
-    // this.pubSub.ee.setMaxListeners(99);
+    this.pubSub = new PubSub();
+    this.pubSub.ee.setMaxListeners(99);
     this.app = new GraphQLServer({
       schema, 
       context: req => {
+        console.log(req.connection.context.currentUser);
+        
         return {
-          req: req.request
+          req: req.request,
+          pubSub: this.pubSub
         }
       }
     })
